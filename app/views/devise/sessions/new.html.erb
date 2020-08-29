@@ -1,0 +1,49 @@
+<%= notice %>
+<%= render 'layouts/header', header: @header %>
+
+<div class="container">
+　<div class="row">
+    <div class="col-md-4 col-xs-offset-1" style="text-align: center;">
+      <h4 style="background-color: lightgray;">ログインページ</h4>
+    </div>
+  </div>
+
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-xs-8 col-xs-offset-3" style="text-align: center;">
+        <table>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <tr>
+            <td style="padding: 5px;"><%= f.label :メールアドレス %></td>
+            <td style="padding: 5px;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </tr>
+          <tr>
+            <td style="padding: 5px;"><%= f.label :パスワード %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %><% end %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary col-xs-12" %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-xs-4 col-xs-offset-1" style="text-align: center;">
+        <h4 style="background-color: lightgray;">登録がお済みでない方</h4>
+        <h5><%= link_to "こちら", new_user_registration_path %>　から新規登録を行なってください。</h5>
+      </div>
+    </div>
+</div>
+
+<%= render 'layouts/footer', footer: @footer %>
+
+
