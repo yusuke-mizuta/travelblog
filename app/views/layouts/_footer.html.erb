@@ -1,0 +1,41 @@
+<footer style="margin-top: 50px; text-align: center; background-color: gray;">
+	     <div class="wrap">
+      <ul id="tab-menu" class="clearfix">
+        <li><a href="#tab1" class="active">サイト概要</a></li>
+        <li><a href="#tab2" class="">お知らせ</a></li>
+        <li><a href="#tab3" class="">使い方</a></li>
+        <li><a href="#tab4" class="">HELP</a></li>
+      </ul>
+
+      <div id="tab-contents" class="clearfix">
+        <div id="tab1" class="tab">
+          <p>このサイトはプログラミング学習専用の問題サイトです。</p>
+        </div>
+
+        <div id="tab2" class="tab">
+          <p>毎日機能を更新予定</p>
+        </div>
+
+        <div id="tab3" class="tab">
+          <p>問題を作成する。→問題一覧、ランダムから問題を解く</p>
+        </div>
+
+        <div id="tab4" class="tab">
+          <p>お困りの方はこちらまで　090-0000-1111</p>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript">
+  $('#tab-contents .tab[id != "tab5"]').hide();
+
+$('#tab-menu a').on('click', function() {
+  $("#tab-contents .tab").hide();
+  $("#tab-menu .active").removeClass("active");
+  $(this).addClass("active");
+  $($(this).attr("href")).show();
+  return false;
+});
+
+</script>
+   	<p style="padding: 25px;">©︎All Right recived by YUSUKE</p>
+</footer>
