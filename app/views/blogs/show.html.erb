@@ -3,18 +3,18 @@
 
 <div class="container">
 	<div class="row">
-
+		<%= render 'layouts/user_info', user: @user %>
 		<div class="col-xs-7">
 			<table>
 				<tr>
-					<td><h1><%= @blog.title %></h1></td>
+					<td><h1><%= @blog.title %>	(<%= @blog.genre.name %>)</h1></td>
 					<% if @blog.user == current_user %>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "編集",edit_blog_path(@blog), class: "btn btn-success" %></td>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "削除",blog_path(@blog),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
 					<% end %>
 				</tr>
 			</table>
-			<%= attachment_image_tag @blog, :image, :fill,300,300, format: 'jpeg' %>
+			<%= attachment_image_tag @blog, :image, :fill,500,300, format: 'jpeg' %>
 			<h4 style="padding-top: 10px;">紹介文</h4>
 			<h3><%= @blog.body %></h3>
 

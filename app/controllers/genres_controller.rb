@@ -3,6 +3,12 @@ class GenresController < ApplicationController
   	@genres = Genre.all
   end
 
+  def show
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
+    @blogs = @genre.blogs.page(params[:page]).reverse_order
+  end
+
   def new
   	@genre = Genre.new
   end
