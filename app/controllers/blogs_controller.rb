@@ -30,6 +30,12 @@ class BlogsController < ApplicationController
   	redirect_to blog_path(blog), notice: "更新しました。"
   end
 
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy
+    redirect_to blogs_path(blog), notice: "ブログを削除しました。"
+  end
+
   private
   def blog_params
   	params.require(:blog).permit(:title, :body, :image, :user_id, :genre_id)
