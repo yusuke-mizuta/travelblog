@@ -1,2 +1,26 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<%= render 'layouts/header', header: @header %>
+
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h1>ブログ作成</h1>
+		   <%= form_for @blog do |f| %>
+          <div class="row">
+            <label style="margin: 5px;">タイトル</label><br>
+            <p style="margin: 5px;"><%= f.text_field :title, class: "col-xs-12" %></p>
+          </div>
+          <div class="row">
+            <label style="margin: 5px;">紹介文</label>
+            <p style="margin: 5px;"><%= f.text_area :body, class: "col-xs-12" %></p>
+          </div>
+          <div class="row">
+            <label style="margin: 5px;">画像</label>
+            <p style="margin: 5px;"><%= f.attachment_field :image %></p>
+          </div>
+          <div class="row">
+            <p style="padding-top: 10px;"><%= f.submit "新規作成", class: "btn btn-primary col-xs-12" %></p>
+          </div>
+          <% end %>
+		</div>
+	</div>
+
+<%= render 'layouts/footer', footer: @footer %>

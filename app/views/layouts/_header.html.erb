@@ -1,35 +1,24 @@
-<header class="navbar navbar-clearfixed-top navbar-inverse"style="background-color: lightblue;">
-  <div class="container">
-    <div class="row">
-      <nav class="nav navbar-nav navbar-left">
-        <table>
-          <tr>
-            <td><span style="color:white; font-size: 30px;">問題</span></td>
+<header class="navbar navbar-clearfixed navbar-inverse"style="background-color: lightyellow;">
+    <div class="container">
+      <div class="row">
+        <nav class="nav navbar-nav navbar-left">
+          <span style="color:blue; font-size: 30px;">旅ブログ</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-            <td style="padding: 10px;"><%= form_with(url: search_search_path,method: :get,local: true) do |f| %>
-                <%= f.text_field :search %>
-                <%= f.select :model , options_for_select({ユーザー: :user,問題: :question })%>
-                <%= f.submit '検索' %>
-                <% end %></td>
+              <li><%= link_to "検索",search_search_path, class: "glyphicon glyphicon-search" %></li>
+              <li><%= link_to "トップページ",blogs_path, class: "glyphicon glyphicon-book" %></li>
+              <li><%= link_to "マイページ",user_path(current_user), class: "glyphicon glyphicon-home home" %></li>
+              <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+            <% else %>
+              <li><%= link_to "トップページ",root_path, class: "glyphicon glyphicon-home" %></li>
+              <li><%= link_to "新規登録",new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+              <li><%= link_to "ログイン",new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
             <% end %>
-          </tr>
-        </table>
-      </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to "ランダム",questions_random_path, class: "glyphicon glyphicon-search" %></li>
-          <li><%= link_to "マイページ",user_path(current_user), class: "glyphicon glyphicon-home home" %></li>
-          <li><%= link_to "ユーザー",users_path, class: "glyphicon glyphicon-user" %></li>
-          <li><%= link_to "問題",questions_path, class: "glyphicon glyphicon-book" %></li>
-          <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
-        <% else %>
-          <li><%= link_to "Home",root_path, class: "glyphicon glyphicon-home" %></li>
-          <li><%= link_to "sign up",new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
-          <li><%= link_to " login",new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </header>
