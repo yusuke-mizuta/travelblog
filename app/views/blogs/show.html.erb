@@ -1,2 +1,71 @@
-<h1>Blogs#show</h1>
-<p>Find me in app/views/blogs/show.html.erb</p>
+<div class="notice"><%= notice %></div>
+<%= render 'layouts/header', header: @header %>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-xs-7">
+			<table>
+				<tr>
+					<td><h1><%= @blog.title %></h1></td>
+					<% if @blog.user == current_user %>
+					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "編集",edit_blog_path(@blog), class: "btn btn-success" %></td>
+					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "削除",blog_path(@blog),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+					<% end %>
+				</tr>
+			</table>
+			<%= attachment_image_tag @blog, :image, :fill,300,300, format: 'jpeg' %>
+			<h4 style="padding-top: 10px;">紹介文</h4>
+			<h3><%= @blog.body %></h3>
+
+			<table>
+				<tr>
+					<td><%= link_to user_path(@user) do %>
+						<%= attachment_image_tag @blog.user, :profile_image, :fill,30,30, format: 'jpeg' %>
+						<% end %></td>
+					<td style="padding: 10px;">by<%= @blog.user.name %></td>
+					<td class="glyphicon glyphicon-calendar" style="padding-top: 10px;"><%= @blog.created_at.strftime('%Y/%m/%d') %></td>
+					<% if @blog.favorited_by?(current_user) %>
+  					<td style="padding: 10px;"><%= link_to blog_favorite_path(@blog), method: :delete do %>
+ 						<span class="glyphicon glyphicon-heart" style="color: red;"></span>
+  						<% end %></td>
+					<% else %>
+					<td style="padding: 10px;"><%= link_to blog_favorites_path(@blog), method: :post do %>
+    					<span class="glyphicon glyphicon-heart" style="color: black;"></span>
+  						<% end %></td>
+					<% end %>
+ 					<td><%= @blog.favorites.count %>いいね</td>
+ 					<td style="padding: 10px;"><span class="glyphicon glyphicon-comment"></span> <%= @blog.comments.count %></td>
+				</tr>
+			</table>
+
+			<h4 style="margin-top: 30px;">コメント</h4>
+			<%= form_for @comment do |f| %>
+ 				<%= f.hidden_field :blog_id, :value => @blog.id %>
+  				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.text_area :comment,placeholder: "コメントをここに", class: "col-xs-12" %>
+				<%= f.submit "送信する", class: "btn btn-primary  pull-right" %>
+			<% end %>
+		</div>
+
+		<div class="col-xs-2" style="margin-top: 100px;">
+			<h4>コメント一覧</h4>
+			<table class="table table-hover">
+  				<% @blog.comments.each do |comment| %>
+  				<tr>
+  					<td><p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
+  						<p><%= comment.comment %></p>
+  						<p>by <%= comment.user.name %>
+  						      <% if comment.user == current_user %>
+            		<td>        <%= link_to "削除",comment_path(comment), method: :delete, class: "btn btn-danger", "data-confirm" => "are you sure?" %><% end %></p>
+  					</td>
+  				</tr>
+   				<% end %>
+  			</table>
+  		</div>
+
+	</div>
+</div>
+
+
+<%= render 'layouts/footer', footer: @footer %>
