@@ -16,6 +16,20 @@
   @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.notice{
+  background-color: lightgreen;
+  font-size: 20px;
+  text-align: center;
+}
+
+header{
+  width: 100%;
+}
+
+.navbar-inverse{
+  height:100px;
+}
+
 .wrap{
   margin: 0 auto;
 }
@@ -55,3 +69,39 @@
 }
 
 
+.main-visual{
+  height: 300px;
+  margin: 0;
+  padding: 0;
+}
+
+.image1 {
+  background-image: url(japan.jpg);
+  text-align: center;
+  padding-top: 105px;
+  font-size:24px;
+}
+.image2 {
+  background-image: url(italy.jpg);
+  text-align: center;
+  padding-top: 105px;
+  font-size:24px;
+}
+.image3 {
+  background-image: url(lake.jpg);
+  text-align: center;
+  padding-top: 105px;
+  font-size:24px;
+}
+.image4 {
+  background-image: url(snow.jpg);
+  text-align: center;
+  padding-top: 105px;
+  font-size:24px;
+}
+.image5 {
+  background-image: url(sunset.jpg);
+  text-align: center;
+  padding-top: 105px;
+  font-size:24px;
+}
