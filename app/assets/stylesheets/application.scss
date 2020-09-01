@@ -24,11 +24,19 @@
 
 header{
   width: 100%;
+  height: 70px;
 }
 
-.navbar-inverse{
-  height:100px;
+.navbar{
+  padding-top: 20px;
 }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 
 .wrap{
   margin: 0 auto;

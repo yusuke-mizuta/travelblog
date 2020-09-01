@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
   def index
   	@blogs = Blog.all
+    @genres = Genre.all
+    @blog_ranks = Blog.find(Favorite.group(:blog_id).order('count(blog_id) desc').limit(3).pluck(:blog_id))
   end
 
   def new
