@@ -3,10 +3,15 @@ class GenresController < ApplicationController
   	@genres = Genre.all
   end
 
+  def admin_index
+    @genres = Genre.all
+    @genre = Genre.new
+  end
+
   def show
     @genres = Genre.all
     @genre = Genre.find(params[:id])
-    @blogs = @genre.blogs.page(params[:page]).reverse_order
+    @blogs = @genre.genre_blogs.page(params[:page]).reverse_order.limit(6)
   end
 
   def new

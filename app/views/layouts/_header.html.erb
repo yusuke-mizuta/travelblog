@@ -11,6 +11,11 @@
               <li><%= link_to "トップページ",blogs_path, class: "glyphicon glyphicon-book" %></li>
               <li><%= link_to "マイページ",user_path(current_user), class: "glyphicon glyphicon-home home" %></li>
               <li><%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+            <% elsif admin_signed_in? %>
+              <li><%= link_to "トップページ",admins_top_path, class: "glyphicon glyphicon-home" %></li>
+              <li><%= link_to "お知らせ一覧",messages_path, class: "glyphicon glyphicon-book" %></li>
+              <li><%= link_to "ジャンル管理",genres_admin_index_path, class: "glyphicon glyphicon-wrench" %></li>
+              <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             <% else %>
               <li><%= link_to "トップページ",root_path, class: "glyphicon glyphicon-home" %></li>
               <li><%= link_to "新規登録",new_user_registration_path, class: "glyphicon glyphicon-edit" %></li>

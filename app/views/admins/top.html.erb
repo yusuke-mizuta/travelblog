@@ -1,0 +1,16 @@
+<div class="notice"><%= notice %></div>
+<%= render 'layouts/header', header: @header %>
+
+<div class="container">
+　	<div class="row">
+    	<div class="col-xs-4 col-xs-offset-4" style="text-align: center;">
+      		<h3 style="background-color: lightgray;">管理者画面</h3>
+    	</div>
+  	</div>
+　<div class="row">
+    <div class="col-xs-12" style="text-align: center;">
+      <h1 style="padding: 5px;">問い合わせ<%= link_to @requests.count,requests_path %>件</h1>
+      <h1 style="padding: 5px;"><%= link_to "お知らせ作成",new_message_path, class: "btn btn-default col-xs-4 col-xs-offset-4" %></h1>
+   	</div>
+  </div>
+</div>

@@ -1,17 +1,18 @@
 class BlogsController < ApplicationController
   def index
-  	@blogs = Blog.all
-    @genres = Genre.all
+  	@blogs = Blog.page(params[:page]).reverse_order
+    @genres = Genre.page(params[:page]).reverse_order
     @blog_ranks = Blog.find(Favorite.group(:blog_id).order('count(blog_id) desc').limit(3).pluck(:blog_id))
   end
 
   def new
   	@blog = Blog.new
+    @genres = Genre.all
   end
 
   def create
-  	@blog = Blog.new(blog_params)
-  	@blog.user_id = current_user.id
+    @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
   	@blog.save
   	redirect_to blogs_path, notice: "ブログを投稿しました。"
   end
@@ -24,6 +25,7 @@ class BlogsController < ApplicationController
 
   def edit
   	@blog = Blog.find(params[:id])
+    @genres = Genre.all
   end
 
   def update
@@ -40,6 +42,6 @@ class BlogsController < ApplicationController
 
   private
   def blog_params
-  	params.require(:blog).permit(:title, :body, :image, :user_id, :genre_id)
+  	params.require(:blog).permit(:title, :body, :image, :user_id, :area, { genre_ids: [] })
   end
 end
