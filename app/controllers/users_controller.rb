@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @blogs = @user.blogs
+    @blogs = @user.blogs.page(params[:page]).reverse_order
   end
 
   def edit

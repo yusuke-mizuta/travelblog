@@ -1,0 +1,30 @@
+<div class="notice"><%= notice %></div>
+<%= render 'layouts/header', header: @header %>
+
+<div class="container">
+  <div class="row">
+    <div class="main col-xs-6">
+      <div class="heading col-xs-6 col-xs-offset-3">
+        <p>運営への問い合わせ</p>
+      </div>
+      <table class="col-xs-12">
+  	  <%= form_for @request do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+        <tr>
+          <td style="padding: 5px;"><%= f.label :タイトル %><br>
+          <%= f.text_field :title, class: "col-xs-12"%></td>
+        </tr>
+        <tr>
+          <td style="padding: 5px;"><%= f.label :本文 %><br>
+          <%= f.text_area :body, class: "col-xs-12"%></td>
+        </tr>
+        <tr>
+          <td style="padding-top: 20px;"><%= f.submit "送信する", class: " btn btn-primary col-xs-12"%></td>
+        </tr>
+     <% end %>
+ 	 </table>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer', footer: @footer %>

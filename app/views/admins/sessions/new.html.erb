@@ -1,0 +1,26 @@
+<%= render 'layouts/header', header: @header %>
+
+<%= notice %>
+
+<div class="container">
+　<div class="row">
+    <div class="col-xs-6 col-xs-offset-3" style="text-align: center;">
+      <div class="box">
+      <h2>管理者ログイン</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render "admins/shared/error_messages", resource: resource %>
+          <div class="inputBox">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+            <%= f.label :メールアドレス %>
+          </div>
+          <div class="inputBox">
+          <%= f.password_field :password, autocomplete: "current-password", required: true %>
+          <%= f.label :パスワード %>
+          </div>
+          <%= f.submit "ログイン", class: "btn btn-primary col-xs-12" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

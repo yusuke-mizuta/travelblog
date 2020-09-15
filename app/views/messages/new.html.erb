@@ -1,0 +1,29 @@
+<div class="notice"><%= notice %></div>
+<%= render 'layouts/header', header: @header %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="alert"><%= alert %></div>
+      <div class="col-xs-4 col-xs-offset-4" style="text-align: center;">
+      		<h3 style="background-color: lightgray;">お知らせ作成</h3>
+    	</div>
+
+      <table class="col-xs-8 col-xs-offset-2">
+        <%= form_for @message do |f| %>
+          <tr>
+          	<td style="padding: 5px;"><%= f.label :タイトル %><br>
+          	<%= f.text_field :title, class: "col-xs-12"%></td>
+          </tr>
+          <tr>
+          	<td style="padding: 5px;"><%= f.label :本文 %><br>
+          	<%= f.text_area :body, class: "col-xs-12"%></td>
+          </tr>
+          <tr>
+            <td style="padding-top: 20px;"><%= f.submit "投稿する", class: " btn btn-primary col-xs-12"%></td>
+          </tr>
+      	<% end %>
+  	  </table>
+  	</div>
+  </div>
+</div>

@@ -1,25 +1,28 @@
-# README
+# 旅ブログ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ブログ投稿サイト
 
-Things you may want to cover:
+### サイトテーマ
+旅で撮った写真をシェアする
 
-* Ruby version
+### テーマを選んだ理由
+DMMwebcampで学んだ機能を使って自分の中で作りたいものとして一番に思いついたのが旅の写真の投稿サイトでした。旅のをしてそこで撮った写真と共にそこで起こった出来事も合わせてシェアできるものがあれば良いなと思い製作しました。
 
-* System dependencies
+### ターゲットユーザ
+旅好きの方
 
-* Configuration
+### 主な利用シーン
+旅をしたあとの投稿、旅の前の旅行先の参考
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
+https://docs.google.com/spreadsheets/d/154-nU1fzBX5XnVxtrfhoUz6F_wwCf50qqUeW3jyffD8/edit?usp=sharing
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# travelblog
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
