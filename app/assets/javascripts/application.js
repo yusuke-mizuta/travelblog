@@ -59,3 +59,11 @@ $(function(){
     reader.readAsDataURL(e.target.files[0]);
 });
 });
+
+$('#star-rating').raty({
+  path: '/assets/js/jquery.raty.js',
+  half: true,
+  score: function() {
+        return $(this).attr('data-score');
+  }
+});

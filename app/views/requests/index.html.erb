@@ -1,2 +1,25 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<div class="notice"><%= notice %></div>
+<%= render 'layouts/header', header: @header %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4" style="text-align: center;">
+      	<h3 style="background-color: lightgray;">問い合わせ一覧</h3>
+    	</div>
+      <div class="col-xs-8 col-xs-offset-2">
+        <table class="table table-striped">
+          <thead>
+            <th style="background-color: #EEEEEE;">投稿日</th>
+            <th style="background-color: #EEEEEE;">タイトル</th>
+          </thead>
+          <% @requests.each do |request| %>
+            <tr>
+              <td style="font-size: 20px;"><%= request.created_at.strftime('%Y/%m/%d') %></td>
+              <td style="font-size: 20px;"><%= link_to request.title,request_path(request) %></td>
+            </tr>
+          <% end %>
+        </table>
+      <%= paginate @requests %>
+      </div>
+      </div>
+    </div>
+  </div>

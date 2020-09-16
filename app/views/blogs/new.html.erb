@@ -29,6 +29,7 @@
           <label style="margin: 5px;">ジャンル</label>
           <p style="margin: 5px;">
           <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+          <%#= f.text_field :name, class: "col-xs-12" %></p>
           </p>
         </div>
         <div class="row">

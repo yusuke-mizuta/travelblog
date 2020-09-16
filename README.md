@@ -19,7 +19,6 @@ DMMwebcampで学んだ機能を使って自分の中で作りたいものとし�
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/154-nU1fzBX5XnVxtrfhoUz6F_wwCf50qqUeW3jyffD8/edit?usp=sharing
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL

@@ -15,5 +15,4 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
     get requests_show_url
     assert_response :success
   end
-
 end
