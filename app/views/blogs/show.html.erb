@@ -7,7 +7,7 @@
 		<div class="col-xs-6">
 			<table>
 				<tr>
-					<td><h1><%= @blog.title %></h1></td>
+					<td><h2><%= @blog.title %>(<%= @blog.area%>)</h2></td>
 					<% if @blog.user == current_user %>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "編集",edit_blog_path(@blog), class: "btn btn-success" %></td>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "削除",blog_path(@blog),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
@@ -17,7 +17,7 @@
 
 			<%= attachment_image_tag @blog, :image, :fill,500,300, format: 'jpeg' %>
 			<h4 style="padding-top: 10px;">
-				<p>評価⭐️</p>
+				<p>評価⭐️<%= @avg %></p>
 				<% @blog.genre_blogs.each do |b| %>
             	#<%= b.genre.name %>
                 <% end %></h4>
@@ -30,27 +30,29 @@
 						<% end %></td>
 					<td style="padding: 10px;">by<%= @blog.user.name %></td>
 					<td class="glyphicon glyphicon-calendar" style="padding-top: 10px;"><%= @blog.created_at.strftime('%Y/%m/%d') %></td>
+
 					<% if @blog.favorited_by?(current_user) %>
-  					<td id="method" style="padding: 10px;">
-  						<%#= link_to blog_favorites_path(@blog), method: :post, remote: true do %>
-  						<a data-remote="true" rel="nofollow" data-method="post" href="/blogs/:blog_id/favorites">
-    					<span class="glyphicon glyphicon-heart" style="color: black;"></span></a>
+  					<td style="padding: 10px;">
+  						<%= link_to blog_favorites_path(@blog), method: :delete, remote: true, id: "method" do %>
+    					<span class="glyphicon glyphicon-heart" style="color: red;"></span></a>
+    					<% end %>
   						</td>
 					<% else %>
-					<td id="method" style="padding: 10px;">
-						<%#= link_to blog_favorite_path(@blog), method: :delete, remote: true do %>
-						<a data-remote="true" rel="nofollow" data-method="delete" href="/blogs/:blog_id/favorites">
+					<td style="padding: 10px;">
+						<%= link_to blog_favorites_path(@blog), method: :post, remote: true, id: "method" do %>
     					<span class="glyphicon glyphicon-heart" style="color: black;"></span>
+    					<% end %>
   						</td>
 					<% end %>
+
  					<td><span id="count"><%= @blog.favorites.count %>いいね</span></td>
  					<td style="padding: 10px;"><span class="glyphicon glyphicon-comment"></span> <%= @blog.comments.count %></td>
 				</tr>
 			</table>
 
 			<h4 style="margin-top: 30px;">コメント・レビュー</h4>
-			<p id="star1">⭐️⭐️</p>
 			<%= form_for @comment do |f| %>
+			<p id="star"></p>
  				<%= f.hidden_field :blog_id, :value => @blog.id %>
   				<%= f.hidden_field :user_id, :value => current_user.id %>
 				<%= f.text_area :comment,placeholder: "コメントをここに", class: "col-xs-12" %>
@@ -64,7 +66,7 @@
   				<% @blog.comments.each do |comment| %>
   				<tr>
   					<td><p><%= comment.created_at.strftime('%Y/%m/%d') %></p>
-  						<p>⭐️</p>
+  						<p>⭐️<%= comment.rate %></p>
   						<p><%= comment.comment %></p>
   						<p>by <%= comment.user.name %>
   						      <% if comment.user == current_user %>
@@ -76,6 +78,5 @@
   		</div>
 	</div>
 </div>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.raty.js"></script>
+
 <%= render 'layouts/footer', footer: @footer %>

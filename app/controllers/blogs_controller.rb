@@ -1,8 +1,8 @@
 class BlogsController < ApplicationController
+before_action :authenticate_user!
   def index
     @blogs = Blog.page(params[:page]).reverse_order
-    @genres = Genre.page(params[:page]).reverse_order
-    @blog_ranks = Blog.find(Favorite.group(:blog_id).order('count(blog_id) desc').limit(3).pluck(:blog_id))
+    @user = current_user
   end
 
   def new
@@ -26,6 +26,9 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @user = @blog.user
     @comment = Comment.new
+    if @blog.comments.present?
+      @avg = Comment.where(blog_id: params[:id]).average(:rate).round(1)
+    end
   end
 
   def edit
