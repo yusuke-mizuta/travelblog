@@ -20,5 +20,4 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     get messages_edit_url
     assert_response :success
   end
-
 end

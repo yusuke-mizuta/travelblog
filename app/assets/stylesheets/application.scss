@@ -42,6 +42,10 @@ header .navbar .navbar-clearfixed .navbar-inverse{
   padding-bottom: 0;
 }
 
+.profile-image{
+  border-radius: 50%;
+}
+
 .clearfix::after {
   content: "";
   display: block;
@@ -223,5 +227,16 @@ header .navbar .navbar-clearfixed .navbar-inverse{
 .box input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,.8) inset;
     -webkit-text-fill-color: #fff !important;
+}
+
+.product{
+  width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: space-between;
+}
+.product p{
+  margin-left:20px;
 }
 

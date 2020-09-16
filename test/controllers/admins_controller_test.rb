@@ -5,5 +5,4 @@ class AdminsControllerTest < ActionDispatch::IntegrationTest
     get admins_top_url
     assert_response :success
   end
-
 end

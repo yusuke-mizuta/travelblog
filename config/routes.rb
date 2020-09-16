@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  post '/blogs/:blog_id/favorites' => "favorites#create"
+  delete '/blogs/:blog_id/favorites' => "favorites#destroy"
   get 'admins/top'
   get 'search/search'
   root 'home#index'
@@ -7,23 +8,23 @@ Rails.application.routes.draw do
   get 'genres/admin_index'
 
   devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations',
+  }
   devise_for :users, controllers: {
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
-}
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+  }
 
   resources :users
   resources :admins
   resources :blogs do
-    resources :favorites, only:[:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
   resources :genres
-  resources :comments, only:[:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   resources :requests
   resources :messages
 

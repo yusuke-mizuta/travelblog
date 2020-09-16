@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-		before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 
@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-      blogs_path
+    blogs_path
   end
 
   def after_sign_in_path_for(resource_or_scope)
@@ -26,5 +26,4 @@ class ApplicationController < ActionController::Base
       new_user_session_path
     end
   end
-
 end
