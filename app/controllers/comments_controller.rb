@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
+    comment.rate = params[:score]
     comment.save
     redirect_to blog_path(comment.blog_id), notice: "コメントを投稿しました。"
   end
@@ -14,6 +15,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :user_id, :blog_id)
+    params.require(:comment).permit(:comment, :user_id, :blog_id, :rate)
   end
 end

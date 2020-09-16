@@ -13,10 +13,10 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function() {
+$(document).ready(function() {
   $("#theTarget").skippr({
       // ("fade" or "slide")
       transition : 'fade',
@@ -60,10 +60,12 @@ $(function(){
 });
 });
 
-$('#star-rating').raty({
-  path: '/assets/js/jquery.raty.js',
+$(function(){
+$('#star').raty({
+  path: '/assets/',
   half: true,
   score: function() {
         return $(this).attr('data-score');
   }
+});
 });

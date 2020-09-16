@@ -1,4 +1,5 @@
 $(".glyphicon-heart").css('color', 'red');
-$("#count").html("<%= @blog.favorites.count %>");
-$("#method").attr({"data-method", "delete");
+$("#count").html("<%= @blog.favorites.count %>いいね");
+$("#method").removeAttr("data-method");
+$("#method").attr("data-method", "delete");
 console.log("text 1")

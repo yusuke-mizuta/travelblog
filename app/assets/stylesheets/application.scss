@@ -105,31 +105,31 @@ header .navbar .navbar-clearfixed .navbar-inverse{
 }
 
 .image1 {
-  background-image: url(japan.jpg);
+  background-image: image-url("japan.jpg");
   text-align: center;
   padding-top: 105px;
   font-size:24px;
 }
 .image2 {
-  background-image: url(italy.jpg);
+  background-image: image-url("italy.jpg");
   text-align: center;
   padding-top: 105px;
   font-size:24px;
 }
 .image3 {
-  background-image: url(lake.jpg);
+  background-image: image-url("lake.jpg");
   text-align: center;
   padding-top: 105px;
   font-size:24px;
 }
 .image4 {
-  background-image: url(snow.jpg);
+  background-image: image-url("snow.jpg");
   text-align: center;
   padding-top: 105px;
   font-size:24px;
 }
 .image5 {
-  background-image: url(sunset.jpg);
+  background-image: image-url("sunset.jpg");
   text-align: center;
   padding-top: 105px;
   font-size:24px;
@@ -239,4 +239,5 @@ header .navbar .navbar-clearfixed .navbar-inverse{
 .product p{
   margin-left:20px;
 }
+
 
