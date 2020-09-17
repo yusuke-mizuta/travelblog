@@ -8,7 +8,9 @@ class MessagesController < ApplicationController
     if message.save
       redirect_to messages_path, notice: "お知らせを投稿しました。"
     else
+      @message = Message.new
       render "new"
+      flash[:alert] = 'お知らせの投稿に失敗しました。'
     end
   end
 
@@ -26,8 +28,13 @@ class MessagesController < ApplicationController
 
   def update
     message = Message.find(params[:id])
-    message.update(message_params)
-    redirect_to message_path(message), notice: "お知らせを編集しました。"
+    if message.update(message_params)
+      redirect_to message_path(message), notice: "お知らせを編集しました。"
+    else
+      @message = Message.find(params[:id])
+      render "edit"
+      flash[:alert] = 'お知らせの編集に失敗しました。'
+    end
   end
 
   def destroy

@@ -1,10 +1,9 @@
+<div class="notice"><%= notice %></div>
 <%= render 'layouts/header', header: @header %>
-
-<%= notice %>
 
 <div class="container">
 　<div class="row">
-    <div class="col-xs-6 col-xs-offset-3" style="text-align: center;">
+    <div class="main col-xs-6 col-xs-offset-3" style="text-align: center;">
       <div class="box">
       <h2>管理者ログイン</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

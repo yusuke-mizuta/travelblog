@@ -1,10 +1,10 @@
-<%= notice %>
+<div class="notice"><%= notice %></div>
 <%= render 'layouts/header', header: @header %>
 <%= render 'blogs/main_visual' %>
 
 <div class="container">
 	<div class="row">
-		<div class="blog col-xs-9">
+		<div class="main col-xs-9">
 
 	    <h4 style="text-align: center; margin-top: 30px;">お知らせ</h4>
 	    <table class="table table-hover">
@@ -18,7 +18,7 @@
 	      </tr>
 	    </table>
 
-		<h2 style="margin-bottom: 20px;">最近のブログ</h2>
+		  <h2 style="margin-bottom: 20px;">最近のブログ</h2>
 	  	<table class="table table-hover">
 	    	<% @blogs.each do |blog| %>
 	    	　<tr>
@@ -26,18 +26,19 @@
           	<td style="font-size: 20px; padding: 50px 50px;"><%= link_to blog.title,blog_path(blog) %><br>
           			<%= blog.created_at.strftime('%Y/%m/%d') %><br>
                 <% blog.genre_blogs.each do |b| %>
-          			<%= b.genre.name %>
+          			#<%= link_to b.genre.name, genre_path(b.genre.id) %>
                 <% end %></td>
         	</tr>
        	<% end %>
       </table>
+
     </div>
 
   	<div class="sidebar col-xs-3" style="margin-top: 60px;">
 
       <table class="table tables-bordered">
         <thead>
-          <th style="text-align: center;">人気の記事</th>
+          <th style="text-align: center;">人気のブログ</th>
         </thead>
         <% @blog_ranks.each.with_index(1) do |blog, i| %>
           <tr>
@@ -48,7 +49,7 @@
 
       <table class="table tables-bordered">
         <thead>
-          <th style="text-align: center;">人気の記事</th>
+          <th style="text-align: center;">評価の高いブログ</th>
         </thead>
         <% @star_ranks.each.with_index(1) do |blog, i| %>
           <tr>
@@ -69,6 +70,7 @@
    			<% end %>
 			</table>
       <%= paginate @genres %>
+
   	</div>
   </div>
 </div>

@@ -13,12 +13,15 @@ before_action :authenticate_user!
   def create
     blog = Blog.new(blog_params)
     blog.user_id = current_user.id
-    genre_list = params[:blog][:name].split(nil)
+    genre_list = params[:blog][:genre_names].split(/　| /)
     if blog.save
        blog.save_genre(genre_list)
        redirect_to blogs_path, notice: "ブログを投稿しました。"
     else
+      @blog = Blog.new
+      @genres = Genre.all
       render "new"
+      flash.now[:alert] = '必要事項を入力してください。'
     end
   end
 
@@ -51,6 +54,6 @@ before_action :authenticate_user!
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body, :image, :user_id, :area, { genre_ids: [] })
+    params.require(:blog).permit(:title, :body, :image, :user_id, :area)
   end
 end

@@ -3,28 +3,27 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<h1>User info</h1>
+			<h1>ユーザー情報</h1>
 		  <%= form_for @user do |f| %>
           <div class="row">
-            <label style="margin: 5px;">name</label><br>
+            <label style="margin: 5px;">名前</label><br>
             <p style="margin: 5px;"><%= f.text_field :name, class: "col-xs-12" %></p>
           </div>
           <div class="row">
-            <label style="margin: 5px;">introduction</label>
+            <label style="margin: 5px;">自己紹介</label>
             <p style="margin: 5px;"><%= f.text_area :introduction, class: "col-xs-12" %></p>
           </div>
-          <div class="item-image" style="margin: 10px;">
+          <div class="item-image" style="margin: 5px;">
   			<%= attachment_image_tag @user, :profile_image, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
   			<p style="margin: 5px;"><%= f.attachment_field :profile_image %></p>
 		  </div>
 
-          <div class="row">
-            <p style="padding-top: 10px;"><%= f.submit "更新", class: "btn btn-primary col-xs-12" %></p>
-          </div>
-          <% end %>
+      <div class="row">
+        <p style="padding-top: 10px;"><%= f.submit "更新", class: "btn btn-primary col-xs-12" %></p>
+      </div>
+      <% end %>
 		</div>
 	</div>
 </div>
-
 
 <%= render 'layouts/footer', footer: @footer %>

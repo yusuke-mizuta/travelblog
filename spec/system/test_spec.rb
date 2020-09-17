@@ -43,6 +43,31 @@ RSpec.describe "Users", type: :system do
 end
 
 RSpec.describe "Users", type: :system do
+  describe 'ユーザー認証のテスト' do
+    let!(:user) { create(:user) }
+    describe 'ユーザーログイン' do
+      before do
+        visit new_user_session_path
+      end
+      context '新規登録画面に遷移' do
+        it '新規登録に成功する' do
+          fill_in 'user[email]', with: "a@examle.com"
+          fill_in 'user[password]', with: 'password'
+          click_button 'ログイン'
+          expect(page).to have_content 'successfully'
+        end
+        it '新規登録に失敗する' do
+          fill_in 'user[email]', with: 'a@text'
+          fill_in 'user[password]', with: 'aaaaa'
+          click_button 'ログイン'
+          expect(page).to have_content 'Invalid'
+        end
+      end
+    end
+  end
+end
+
+RSpec.describe "Users", type: :system do
   describe 'マイページ' do
     let!(:user) { create(:user) }
     context "マイページが正しく表示される" do

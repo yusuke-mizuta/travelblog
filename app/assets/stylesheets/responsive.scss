@@ -1,0 +1,41 @@
+@media screen and (max-width:768px) {
+.main{
+  width: 90%!important;
+  left: 5%;
+}
+.main.col-xs-offset-3{
+	margin-left: 0%!important;
+}
+.main.col-xs-offset-2{
+	margin-left: 0%!important;
+}
+.menuicon{
+  display: block;
+}
+.sidebar{
+  flort: none;
+  width: 90%!important;
+  left: 5%;
+}
+.sidebar.col-xs-offset-3{
+  margin-left: 0%!important;
+}
+.fullpagemenu.active{
+  width:100%;
+  left: 0;
+}
+.navbar-left a{
+  margin-left:20px;
+}
+.navbar-right{
+	display: none;
+}
+.product{
+  justify-content: center!important;
+
+}
+.product p{
+  margin-left:20px;
+}
+}
+
