@@ -2,6 +2,8 @@
 
 <div class="container">
   <div class="row">
+    <div class="alert"><%= alert %></div>
+
     <div class="col-xs-8 col-xs-offset-2">
       <h1>ブログ投稿</h1>
       <%= form_for @blog do |f| %>
@@ -16,6 +18,7 @@
         <div class="row">
           <div class="item-image" style="margin: 10px; text-align: center;">
           <%= attachment_image_tag @blog, :image, class: "img-square", fallback: "no_image.jpg", size:"300x300" %>
+          </div>
         </div>
         <div class="row">
           <label style="margin: 5px;">画像</label>
@@ -28,8 +31,8 @@
         <div class="row">
           <label style="margin: 5px;">ジャンル</label>
           <p style="margin: 5px;">
-          <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
-          <%#= f.text_field :name, class: "col-xs-12" %></p>
+          <%#= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
+          <%= f.text_field :genre_names, class: "col-xs-12" %></p>
           </p>
         </div>
         <div class="row">

@@ -2,17 +2,17 @@
 <%= render 'layouts/header', header: @header %>
 <div class="container">
   <div class="row">
-  	<div class="col-xs-4 col-xs-offset-4" style="text-align: center;">
-      	<h3 style="background-color: lightgray;">問い合わせ</h3>
-    </div>
+  	<div class="main col-xs-8 col-xs-offset-2">
+	  	<div class="heading col-xs-6 col-xs-offset-3">
+	      	<h3>問い合わせ</h3>
+	    </div>
 
-	<div class="col-xs-8 col-xs-offset-2">
-		<h2 style="text-align: center;"><%= @request.title %></h2>
-	    <h2 style="padding: 20px; margin-bottom: 30px;"><%= @request.body %></h2>
-	<% if admin_signed_in? %>
-	    <%= link_to "削除する",request_path(@request),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-xs-4 col-xs-offset-8" %><br>
-	<span style="padding: 20px;"><%= link_to "問い合わせ一覧",requests_path, class: "btn btn-primary col-xs-12" %></span>
-	<% end %>
+	    <div class="col-xs-12">
+			<h2><%= @request.title %></h2>
+		    <h2 style="padding: 20px; margin-bottom: 30px;"><%= @request.body %></h2>
+			<%= link_to "削除する",request_path(@request),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-xs-4 col-xs-offset-8" %><br>
+			<span style="padding: 20px;"><%= link_to "問い合わせ一覧",requests_path, class: "btn btn-primary col-xs-12" %></span>
+    	</div>
     </div>
   </div>
 </div>

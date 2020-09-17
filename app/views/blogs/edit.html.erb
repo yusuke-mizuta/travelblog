@@ -26,10 +26,6 @@
           <p style="margin: 5px;"><%= f.text_field :area, class: "col-xs-12" %></p>
         </div>
     		<div class="row">
-      		<label style="margin: 5px;">ジャンル</label>
-      		<p style="margin: 5px;"><%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %></p>
-    		</div>
-    		<div class="row">
       		<p style="padding-top: 10px;"><%= f.submit "更新", class: "btn btn-primary col-xs-12" %></p>
     		</div>
    	<% end %>

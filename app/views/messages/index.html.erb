@@ -1,25 +1,29 @@
 <div class="notice"><%= notice %></div>
 <%= render 'layouts/header', header: @header %>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4 col-xs-offset-4" style="text-align: center;">
+<div class="container">
+  <div class="row">
+    <div class="main col-xs-8 col-xs-offset-2">
+
+      <div class="heading col-xs-6 col-xs-offset-3" style="text-align: center;">
       	<h3 style="background-color: lightgray;">お知らせ画面</h3>
     	</div>
-      <div class="col-xs-8 col-xs-offset-2">
-        <table class="table table-striped">
-          <thead>
-            <th style="background-color: #EEEEEE;">投稿日</th>
-            <th style="background-color: #EEEEEE;">タイトル</th>
-          </thead>
-          <% @messages.each do |message| %>
-            <tr>
-              <td style="font-size: 20px;"><%= message.created_at.strftime('%Y/%m/%d') %></td>
-              <td style="font-size: 20px;"><%= link_to message.title,message_path(message) %></td>
-            </tr>
-          <% end %>
-        </table>
+
+      <table class="table table-striped">
+        <thead>
+          <th style="background-color: #EEEEEE;">投稿日</th>
+          <th style="background-color: #EEEEEE;">タイトル</th>
+        </thead>
+        <% @messages.each do |message| %>
+          <tr>
+            <td style="font-size: 20px;"><%= message.created_at.strftime('%Y/%m/%d') %></td>
+            <td style="font-size: 20px;"><%= link_to message.title,message_path(message) %></td>
+          </tr>
+        <% end %>
+      </table>
+
       <%= paginate @messages %>
-      </div>
-      </div>
     </div>
   </div>
+</div>
+
+<%= render 'layouts/footer', footer: @footer %>
