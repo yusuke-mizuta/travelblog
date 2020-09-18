@@ -1,40 +1,23 @@
-<div class="notice"><%= notice %></div>
 <%= render 'layouts/header', header: @header %>
 
 <div class="container">
   <div class="row">
-    <div class="heading col-xs-4 col-xs-offset-4">
-      <p>ジャンル一覧・追加</p>
-    </div>
-  </div>
+    <div class="col-xs-8 col-xs-offset-2">
 
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-4">
-      <table>
-        <%= form_with model:@genre, url:(admin_genres_path),local: true do |f| %>
-          <td>ジャンル</td>
-            <td style="padding-left: 10px;"><%= f.text_field :name %></td>
-        　 <td style="padding-left: 20px;"><%= f.submit "追加", class: "btn btn-primary"%></td>
+      <div class="heading col-xs-6 col-xs-offset-3">
+        <p>タグ一覧</p>
+      </div>
+
+      <table class="table table-hover table-striped">
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= link_to genre.name, genre_path(genre) %>(<%= genre.genre_blogs.count %>)</td>
+          </tr>
         <% end %>
       </table>
-      <div class="alert"><%= alert %></div>
+
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <table class="table table-striped">
-        <thead>
-          <th>ジャンル</th>
-          <th></th>
-          <th></th>
-        </thead>
-          <% @genres.each do |genre| %>
-          <tr>
-            <td><%= genre.name %></td>
-            <td><%= link_to "編集する",edit_admin_genre_path(genre), class: "btn btn-success" %></td>
-            <td><%= link_to "削除する",admin_genre_path(genre),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-          </tr>
-          <% end %>
-      </table>
-    </div>
+<%= render 'layouts/footer', footer: @footer %>

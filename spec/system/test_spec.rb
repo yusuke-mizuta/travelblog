@@ -6,6 +6,7 @@ RSpec.describe "Root", type: :request do
       before do
         get root_path
       end
+
       it 'タイトルが正しく表示されていること' do
         expect(response.body).to include("旅ブログ")
       end
@@ -22,6 +23,7 @@ RSpec.describe "Users", type: :system do
       before do
         visit new_user_registration_path
       end
+
       context '新規登録画面に遷移' do
         it '新規登録に成功する' do
           fill_in 'user[name]', with: 'test'
@@ -45,10 +47,12 @@ end
 RSpec.describe "Users", type: :system do
   describe 'ユーザー認証のテスト' do
     let!(:user) { create(:user) }
+
     describe 'ユーザーログイン' do
       before do
         visit new_user_session_path
       end
+
       context '新規登録画面に遷移' do
         it '新規登録に成功する' do
           fill_in 'user[email]', with: "a@examle.com"
@@ -70,6 +74,7 @@ end
 RSpec.describe "Users", type: :system do
   describe 'マイページ' do
     let!(:user) { create(:user) }
+
     context "マイページが正しく表示される" do
       before do
         visit new_user_session_path
@@ -77,6 +82,7 @@ RSpec.describe "Users", type: :system do
         fill_in 'user[password]', with: "password"
         click_button 'ログイン'
       end
+
       it 'マイページが正しく表示されていること' do
         visit user_path(user.id)
         expect(body).to include("マイページ")
@@ -90,6 +96,7 @@ end
 RSpec.describe "Users", type: :system do
   describe 'トップページ' do
     let!(:user) { create(:user) }
+
     context "トップページが正しく表示される" do
       before do
         visit new_user_session_path
@@ -97,10 +104,10 @@ RSpec.describe "Users", type: :system do
         fill_in 'user[password]', with: "password"
         click_button 'ログイン'
       end
+
       it 'お知らせが正しく表示されていること' do
         expect(body).to include("お知らせ")
       end
     end
   end
 end
-

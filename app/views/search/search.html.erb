@@ -2,23 +2,26 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2" style="text-align: center;">
+		<div class="main col-xs-8 col-xs-offset-2" style="text-align: center;">
 			<h1>検索</h1>
 			<%= form_with(url: search_search_path,method: :get,local: true) do |f| %>
 				<%= f.text_field :search %>
-				<%= f.select :model , options_for_select({ユーザー: :user,ブログ: :blog,撮影場所: :area})%>
+				<%= f.select :model , options_for_select({ユーザー: :user,ブログ: :blog,撮影場所: :area,タグ: :genre})%>
   				<%= f.submit "検索", class: "btn-default" %>
+			<% end %>
+
+			<% if params[:model] == "user" %>
+				<%= render 'users/search',users: @users %>
+			<% elsif params[:model] == "blog" %>
+				<%= render 'blogs/search',blogs: @blogs %>
+			<% elsif params[:model] == "area" %>
+				<%= render 'blogs/search',blogs: @blogs %>
+			<% else params[:model] == "genre" %>
+				<%= render 'genres/search',genres: @genres %>
 			<% end %>
 		</div>
 	</div>
 </div>
 
-	<% if params[:model] == "user" %>
-		<%= render 'users/search',users: @users %>
-	<% elsif params[:model] == "blog" %>
-		<%= render 'blogs/search',blogs: @blogs %>
-	<% else params[:model] == "area" %>
-		<%= render 'blogs/search',blogs: @blogs %>
-	<% end %>
 
 <%= render 'layouts/footer', footer: @footer %>

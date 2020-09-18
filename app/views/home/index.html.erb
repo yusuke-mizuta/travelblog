@@ -8,11 +8,11 @@
 
 	    <h4 style="text-align: center; margin-top: 30px;">お知らせ</h4>
 	    <table class="table table-hover">
-	    <% @messages.each do |message| %>
-	      <tr>
-	      <td><%= link_to message.title, message_path(message) %></td>
-	      </tr>
-	    <% end %>
+  	    <% @messages.each do |message| %>
+  	      <tr>
+  	      <td><%= link_to message.title, message_path(message) %></td>
+  	      </tr>
+  	    <% end %>
 	      <tr>
 	      	<td><%= link_to "<<一覧ページへ",messages_path %></td>
 	      </tr>
@@ -20,10 +20,10 @@
 
 		  <h2 style="margin-bottom: 20px;">最近のブログ</h2>
 	  	<table class="table table-hover">
-	    	<% @blogs.each do |blog| %>
+	    	<% @recent_blogs.each do |blog| %>
 	    	　<tr>
-    				<td><%= link_to blog_path(blog) do %><%= attachment_image_tag blog, :image, :fill,300,200, format: 'jpeg', fallback: "no_image.jpg", size:"300x200" %><% end %></td>
-          	<td style="font-size: 20px; padding: 50px 50px;"><%= link_to blog.title,blog_path(blog) %><br>
+    				<td style="width: 240px;"><%= link_to blog_path(blog) do %><%= attachment_image_tag blog, :image, :fill,300,200, format: 'jpeg', fallback: "no_image.jpg", size:"240x170" %><% end %></td>
+          	<td style="font-size: 20px; padding: 40px 0 0 20px;"><%= link_to blog.title,blog_path(blog) %><br>
           			<%= blog.created_at.strftime('%Y/%m/%d') %><br>
                 <% blog.genre_blogs.each do |b| %>
           			#<%= link_to b.genre.name, genre_path(b.genre.id) %>
@@ -36,29 +36,35 @@
 
   	<div class="sidebar col-xs-3" style="margin-top: 60px;">
 
-      <table class="table tables-bordered">
-        <thead>
-          <th style="text-align: center;">人気のブログ</th>
-        </thead>
-        <% @blog_ranks.each.with_index(1) do |blog, i| %>
-          <tr>
-            <td>第<%= i %>位　❤️<%= blog.favorites.count %>　<%= link_to blog.title,blog_path(blog) %></td>
-          </tr>
-        <% end %>
-      </table>
+      <div class="favorite-blog">
+        <table class="table tables-bordered">
+          <thead>
+            <th style="text-align: center;">人気のブログ</th>
+          </thead>
+          <% @blog_ranks.each.with_index(1) do |blog, i| %>
+            <tr>
+              <td>第<%= i %>位　❤️<%= blog.favorites.count %><br>
+                  <%= link_to blog.title,blog_path(blog) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
-      <table class="table tables-bordered">
-        <thead>
-          <th style="text-align: center;">評価の高いブログ</th>
-        </thead>
-        <% @star_ranks.each.with_index(1) do |blog, i| %>
-          <tr>
-            <td>第<%= i %>位　⭐️<%#= @avg %> <%= link_to blog.title,blog_path(blog) %></td>
-          </tr>
-        <% end %>
-      </table>
+      <div class="star-blog">
+        <table class="table tables-bordered">
+          <thead>
+            <th style="text-align: center;">評価の高いブログ</th>
+          </thead>
+          <% @star_ranks.each.with_index(1) do |blog, i| %>
+            <tr>
+              <td>第<%= i %>位　⭐️<%= @avg %><br>
+                  <%= link_to blog.title,blog_path(blog) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
-  		<table class="table tables-bordered">
+  		<table class="table tables-bordered" style="margin-top: 10px;">
        	<thead>
        		<th style="text-align: center;">タグで探す</th>
      	 	</thead>
@@ -69,7 +75,7 @@
          	</tr>
    			<% end %>
 			</table>
-      <%= paginate @genres %>
+      <%= link_to "タグ一覧",genres_path, class: "btn btn-primary col-xs-12" %>
 
   	</div>
   </div>

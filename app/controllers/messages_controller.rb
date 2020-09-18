@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def new
     @message = Message.new
-   end
+  end
 
   def create
     message = Message.new(message_params)
@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     else
       @message = Message.new
       render "new"
-      flash[:alert] = 'お知らせの投稿に失敗しました。'
+      flash.now[:alert] = 'お知らせの投稿に失敗しました。'
     end
   end
 
@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
     else
       @message = Message.find(params[:id])
       render "edit"
-      flash[:alert] = 'お知らせの編集に失敗しました。'
+      flash.now[:alert] = 'お知らせの編集に失敗しました。'
     end
   end
 
