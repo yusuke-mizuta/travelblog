@@ -1,26 +1,22 @@
-<section>
-  <div class="col-xs-3">
-　  <h2 style="text-align: center;">ユーザー情報</h2>
+<div>
+　<h2 style="text-align: center;"><%= user.name %></h2>
 
-  　  <p style="margin: 5px; text-align: center;"><%= attachment_image_tag user, :profile_image, size:"100x100", fallback: "no_image.jpg" %></p>
-        <table class="table">
-          <tbody>
-      　    <tr>
-              <th>名前</th>
-              <th><%= user.name %></th>
-          　</tr>
-            <tr>
-              <th>自己紹介</th>
-              <th><%= user.introduction %></th>
-            </tr>
-          </tbody>
-        </table>
+  <p style="margin: 5px; text-align: center;"><%= attachment_image_tag user, :profile_image, size:"100x100", fallback: "no_image.jpg" %></p>
 
-        <div class="row">
-          <%= link_to "",edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user" %>
-        </div>
-        <div class="row" style="margin-top: 20px;">
-          <%= link_to "新規投稿",new_blog_path, class: "col-xs-12 btn btn-primary" %>
-        </div>
-  </div>
-</section>
+  <table class="table">
+    <tbody>
+      <thead>
+        <th>自己紹介</th>
+      </thead>
+      <tr>
+        <td><%= user.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <% if user == current_user %>
+    <%= link_to "",edit_user_path(current_user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+    <%= link_to "新規投稿",new_blog_path, class: "col-xs-12 btn btn-primary" %>
+  <% end %>
+
+</div>

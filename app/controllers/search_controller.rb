@@ -10,10 +10,13 @@ class SearchController < ApplicationController
         @blogs = Blog.where("title LIKE ?", "%#{params[:search]}%")
       elsif params[:model] == "area"
         @blogs = Blog.where("area LIKE ?", "%#{params[:search]}%")
+      elsif params[:model] == "genre"
+        @genres = Genre.where("name LIKE ?", "%#{params[:search]}%")
       end
     else
       @blogs = Blog.none
       @users = User.none
+      @genres = Genre.none
     end
   end
 end

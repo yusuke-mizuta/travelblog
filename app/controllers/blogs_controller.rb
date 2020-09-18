@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @blogs = Blog.page(params[:page]).reverse_order
     @user = current_user
@@ -15,8 +15,8 @@ before_action :authenticate_user!
     blog.user_id = current_user.id
     genre_list = params[:blog][:genre_names].split(/　| /)
     if blog.save
-       blog.save_genre(genre_list)
-       redirect_to blogs_path, notice: "ブログを投稿しました。"
+      blog.save_genre(genre_list)
+      redirect_to blogs_path, notice: "ブログを投稿しました。"
     else
       @blog = Blog.new
       @genres = Genre.all
