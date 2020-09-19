@@ -11,6 +11,7 @@
   				<%= f.submit "検索", class: "btn-default" %>
 			<% end %>
 
+			<!-- 検索項目をセレクトしたあとの条件分岐 -->
 			<% if params[:model] == "user" %>
 				<% if @users.present? %>
 					<%= render 'users/search',users: @users %>
@@ -36,6 +37,7 @@
 					<div class="alert">見つかりませんでした</div>
 				<% end %>
 			<% end %>
+
 		</div>
 	</div>
 </div>

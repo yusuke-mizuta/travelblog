@@ -31,6 +31,7 @@
 					<td style="padding: 10px;">by<%= @blog.user.name %></td>
 					<td class="glyphicon glyphicon-calendar" style="padding-top: 10px;"><%= @blog.created_at.strftime('%Y/%m/%d') %></td>
 
+					<!-- いいね機能 -->
 					<% if @blog.favorited_by?(current_user) %>
   					<td style="padding: 10px;">
   						<%= link_to blog_favorites_path(@blog), method: :delete, remote: true, id: "method" do %>
@@ -44,20 +45,25 @@
     					<% end %>
   						</td>
 					<% end %>
-
  					<td><span id="count"><%= @blog.favorites.count %>いいね</span></td>
  					<td style="padding: 10px;"><span class="glyphicon glyphicon-comment"></span> <%= @blog.comments.count %></td>
 				</tr>
 			</table>
 
-			<h4 style="margin-top: 30px;">コメント・レビュー</h4>
-			<%= form_for @comment do |f| %>
-			<p id="star"></p>
- 				<%= f.hidden_field :blog_id, :value => @blog.id %>
-  				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.text_area :comment,placeholder: "コメントをここに", class: "col-xs-12" %>
-				<%= f.submit "送信する", class: "btn btn-primary  pull-right" %>
+			<% if @blog.user != current_user %>
+				<% if @blog.comments.where(user_id: current_user.id).present? %>
+				<% else %>
+					<h4 style="margin-top: 30px;">コメント・レビュー</h4>
+					<%= form_for @comment do |f| %>
+					<p id="star"></p>
+		 				<%= f.hidden_field :blog_id, :value => @blog.id %>
+		  				<%= f.hidden_field :user_id, :value => current_user.id %>
+						<%= f.text_area :comment,placeholder: "コメントをここに", class: "col-xs-12" %>
+						<%= f.submit "送信する", class: "btn btn-primary  pull-right" %>
+					<% end %>
+				<% end %>
 			<% end %>
+
 		</div>
 		<div class="sidebar col-xs-3">
 			<p style="text-align: center; margin-top: 100px;"><h4>コメント一覧</h4></p>

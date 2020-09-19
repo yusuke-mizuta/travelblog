@@ -6,12 +6,13 @@
     <div class="user-info col-xs-3">
       <%= render 'layouts/user_info', user: @user %>
     </div>
+
     <div class="main col-xs-9">
       <h2>ブログ一覧</h2>
       <table class="table table-hover">
         <thead>
           <th></th>
-          <th>撮影場所</th>
+          <th>場所</th>
           <th>タイトル</th>
         </thead>
         <% @blogs.each do |blog| %>
@@ -28,10 +29,8 @@
       <div class="responsive-user-info">
         <%= render 'layouts/user_info', user: @user %>
       </div>
-
     </div>
   </div>
 </div>
-
 
 <%= render 'layouts/footer', footer: @footer %>

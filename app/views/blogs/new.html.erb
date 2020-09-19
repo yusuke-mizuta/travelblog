@@ -29,8 +29,9 @@
           <p style="margin: 5px;"><%= f.text_field :area, class: "col-xs-12" %></p>
         </div>
         <div class="row">
-          <label style="margin: 5px;">ジャンル</label>
+          <label style="margin: 5px;">タグ</label>
           <p style="margin: 5px;">
+          <p>スペースを空けることで複数タグを作成できます</p>
           <%#= f.collection_check_boxes :genre_ids, Genre.all, :id, :name %>
           <%= f.text_field :genre_names, class: "col-xs-12" %></p>
           </p>
