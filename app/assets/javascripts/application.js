@@ -62,7 +62,6 @@ $(function(){
 
 $(function(){
 $('#star').raty({
-  path: '/assets/',
   half: true,
   score: function() {
         return $(this).attr('data-score');
