@@ -20,7 +20,9 @@
   margin: 0;
   padding: 0;
 }
-
+body{
+  background-image: image-url("wood.jpg");
+}
 .main{
   min-height: 530px;
 }
@@ -73,6 +75,7 @@ header .navbar .navbar-clearfixed .navbar-inverse{
 }
 
 .favorite-blog{
+  background-color: white;
   border: solid;
   border-color: red;
   padding-bottom: 20px;
@@ -81,6 +84,7 @@ header .navbar .navbar-clearfixed .navbar-inverse{
 }
 
 .star-blog{
+  background-color: white;
   border: solid;
   border-color: yellow;
   padding-bottom: 20px;
@@ -89,17 +93,28 @@ header .navbar .navbar-clearfixed .navbar-inverse{
   margin-top: 10px;
 }
 
+.popular-genre{
+  background-color: white;
+  border: solid;
+  border-color: green;
+  border-radius: 3%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
 .user-info{
+  background-color: white;
   border: solid;
   border-color: lightblue;
   padding-bottom: 20px;
   border-radius: 3%;
   padding: 10px;
   padding-top: 0;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .responsive-user-info{
+  background-color: white;
   display: none;
 }
 

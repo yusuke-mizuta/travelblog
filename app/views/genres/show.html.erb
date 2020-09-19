@@ -16,14 +16,14 @@
           <%= attachment_image_tag blog.blog, :image, format: 'jpeg', fallback: "no_image.jpg", size:"200x200" %>
           <% end %></p>
         <% end %>
-      <p><%= paginate @blogs %></p>
+      <p><%= paginate @blogs, param_name: :blog_page %></p>
       </div>
     </div>
 
     <div class="sidebar col-xs-3" style="text-align: center;">
       <table class="table tables-bordered">
         <thead>
-          <th style="text-align: center;">タグ検索</th>
+          <th style="text-align: center;">タグ</th>
         </thead>
           <% @genres.each do |genre| %>
             <tr>
@@ -31,8 +31,10 @@
             </tr>
           <% end %>
       </table>
+      <%= paginate @genres, param_name: :genre_page %>
       <%= link_to "タグ一覧",genres_path, class: "btn btn-primary col-xs-12" %>
     </div>
+
   </div>
 </div>
 

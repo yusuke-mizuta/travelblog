@@ -8,7 +8,7 @@
         <p>タグ一覧</p>
       </div>
 
-      <table class="table table-hover table-striped">
+      <table class="table table-hover">
         <% @genres.each do |genre| %>
           <tr>
             <td><%= link_to genre.name, genre_path(genre) %>(<%= genre.genre_blogs.count %>)</td>
