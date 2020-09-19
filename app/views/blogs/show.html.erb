@@ -68,7 +68,10 @@
 						<%= comment.comment %><br>
   						by <%= comment.user.name %>
   						<% if comment.user == current_user %>
-            				<%= link_to "削除",comment_path(comment), method: :delete, class: "btn btn-danger", "data-confirm" => "are you sure?" %>
+  							<%= form_with model:comment, url:(comment_path(comment)),method: :delete,local: true do |f| %>
+  							<%= f.hidden_field :blog_id, :value => @blog.id %>
+            				<%= f.submit "削除", class: "btn btn-danger", "data-confirm" => "コメントを削除しますか？" %>
+            				<% end %>
             			<% end %>
   					</td>
   				</tr>
