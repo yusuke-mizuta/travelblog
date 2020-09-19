@@ -81,15 +81,5 @@
   		</div>
 	</div>
 </div>
-<script>
-$(function(){
-$('#star').raty({
-  path: '/assets/',
-  half: true,
-  score: function() {
-        return $(this).attr('data-score');
-  }
-});
-});
-</script>
+
 <%= render 'layouts/footer', footer: @footer %>
