@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  # ブログの星評価の平均を出すための工程あり
   def create
     comment = Comment.new(comment_params)
     comment.rate = params[:score]

@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "は既に使用されています。"
+              invalid: "は有効でありません。"
+            password:
+              Password: "パスワード"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"

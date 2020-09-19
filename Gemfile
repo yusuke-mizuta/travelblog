@@ -84,3 +84,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# 日本語表記用gem
+gem 'devise-i18n'
+gem 'devise-i18n-views'

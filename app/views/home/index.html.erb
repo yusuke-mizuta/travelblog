@@ -6,19 +6,21 @@
 	<div class="row">
 		<div class="main col-xs-9">
 
-	    <h4 style="text-align: center; margin-top: 30px;">新着のお知らせ</h4>
-	    <table class="table table-hover">
+	    <table class="table table-hover" style="margin-top: 20px;">
+        <thead style="background-color: #EEE;">
+          <th>新着のお知らせ</th>
+        </thead>
   	    <% @messages.each do |message| %>
-  	      <tr>
-  	      <td><%= link_to message.title, message_path(message) %></td>
+  	      <tr style="background-color: white;">
+  	        <td><%= link_to message.title, message_path(message) %></td>
   	      </tr>
   	    <% end %>
-	      <tr>
+	      <tr style="background-color: white;">
 	      	<td><%= link_to "<<一覧ページへ",messages_path %></td>
 	      </tr>
 	    </table>
 
-		  <h2 style="margin-bottom: 20px;">最近のブログ</h2>
+		  <h2>最近のブログ</h2>
 	  	<table class="table table-hover">
 	    	<% @recent_blogs.each do |blog| %>
 	    	　<tr>

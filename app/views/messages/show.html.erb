@@ -1,5 +1,6 @@
 <div class="notice"><%= notice %></div>
 <%= render 'layouts/header', header: @header %>
+
 <div class="container">
   <div class="row">
   	<div class="col-xs-8 col-xs-offset-2">
@@ -21,6 +22,7 @@
 	    	<%= link_to "編集する",edit_message_path(@message), class: "btn btn-success col-xs-4 col-xs-offset-1" %>
 	    	<%= link_to "削除する",message_path(@message),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-xs-4 col-xs-offset-2" %><br>
 		<% end %>
+
 		<span><%= link_to "お知らせ一覧",messages_path, class: "btn btn-primary col-xs-12" %></span>
     </div>
   </div>
