@@ -20,8 +20,15 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
-  private
+  def update
+    request = Request.find(params[:id])
+    request.admin_status = 1
+    byebug
+    request.update(request_params)
+    redirect_to requests_path, notice: "管理者ステータスを更新しました。"
+  end
 
+  private
   def request_params
     params.require(:request).permit(:title, :body, :admin_status)
   end
