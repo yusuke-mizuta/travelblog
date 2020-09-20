@@ -14,6 +14,7 @@ class BlogsController < ApplicationController
   def create
     blog = Blog.new(blog_params)
     blog.user_id = current_user.id
+    #タグの複数登録
     genre_list = params[:blog][:genre_names].split(/　| /)
     if blog.save
       blog.save_genre(genre_list)
@@ -48,8 +49,13 @@ class BlogsController < ApplicationController
 
   def destroy
     blog = Blog.find(params[:id])
-    blog.destroy
-    redirect_to blogs_path(blog), notice: "ブログを削除しました。"
+    if blog.destroy
+      #0のタグを削除
+       blog.delete_genre
+       redirect_to blogs_path(blog), notice: "ブログを削除しました。"
+    else
+      render "show"
+    end
   end
 
   private
