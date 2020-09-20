@@ -35,4 +35,15 @@ class Blog < ApplicationRecord
       # self.genre_blogs << new_genre_blog
     end
   end
+
+  #ブログ削除の際、数が０になったタグの削除
+  def delete_genre
+    genres = Genre.all
+    genres.each do |genre|
+      if genre.genre_blogs.count == 0
+        genre.destroy
+      end
+    end
+  end
+
 end

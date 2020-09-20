@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all
+    @genres = Genre.find(GenreBlog.group(:genre_id).order('count(genre_id) desc').pluck(:genre_id))
   end
 
   def show
