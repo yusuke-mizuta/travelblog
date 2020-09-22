@@ -88,3 +88,8 @@ end
 # 日本語表記用gem
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+#mapの緯度、経度用gem
+gem "geocoder"
+
+gem 'gon'

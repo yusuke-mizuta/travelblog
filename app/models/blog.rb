@@ -6,6 +6,9 @@ class Blog < ApplicationRecord
   has_many :genres, through: :genre_blogs
   has_many :favorites, dependent: :destroy
 
+  geocoded_by :area
+  after_validation :geocode, if: :area_changed?
+
   validates :title, presence: true
   validates :body, presence: true
   validates :image, presence: true

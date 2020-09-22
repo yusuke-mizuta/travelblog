@@ -7,7 +7,11 @@
 			<div class="alert"><%= alert %></div>
 			<table>
 				<tr>
-					<td><h2><%= @blog.title %>(<%= @blog.area%>)</h2></td>
+					<td><h2><%= @blog.title %></h2></td>
+					<td style="padding: 20px 0 0 10px;">
+						<div id="map-toggle" onclick="mapToggle()">
+          				<p>撮影場所</p>
+          			</td>
 					<% if @blog.user == current_user %>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "編集",edit_blog_path(@blog), class: "btn btn-success" %></td>
 					<td style="padding-left: 30px; padding-top: 15px;"><%= link_to "削除",blog_path(@blog),method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
@@ -15,7 +19,7 @@
 				</tr>
 			</table>
 
-			<%= attachment_image_tag @blog, :image, :fill,500,300, format: 'jpeg' %>
+			<%= attachment_image_tag @blog, :image, size:"400x300", format: 'jpeg' %>
 			<h4 style="padding-top: 10px;">
 				<p>評価⭐️<%= @avg %></p>
 				<% @blog.genre_blogs.each do |b| %>
@@ -47,6 +51,8 @@
 					<% end %>
  					<td><span id="count"><%= @blog.favorites.count %>いいね</span></td>
  					<td style="padding: 10px;"><span class="glyphicon glyphicon-comment"></span> <%= @blog.comments.count %></td>
+ 					<td>
+ 						<div id="map-toggle" onclick="mapToggle()"><%= @blog.area %></div></td>
 				</tr>
 			</table>
 
@@ -86,6 +92,13 @@
 
   		</div>
 	</div>
+</div>
+
+<div id="map-page">
+	<div class="map-icon" id="map-toggle" onclick="mapToggle()">
+        <a class="map-toggle" style="font-size: 30px;">❎</a>
+	</div>
+	<div id='map'></div>
 </div>
 
 <%= render 'layouts/footer', footer: @footer %>

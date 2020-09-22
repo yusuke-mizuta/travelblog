@@ -4,12 +4,13 @@
     <title>Travelblog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlxxcl2hgkgTxbbq38IqzYRpQR9-HCbkg&callback=initMap" async defer></script>
   </body>
 </html>
