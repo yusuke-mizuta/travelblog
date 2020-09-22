@@ -30,6 +30,9 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @user = @blog.user
+    gon.latitude = @blog.latitude
+    gon.longitude = @blog.longitude
+    gon.area = @blog.area
     @comment = Comment.new
     if @blog.comments.present?
       @avg = Comment.where(blog_id: params[:id]).average(:rate).round(1)
@@ -61,6 +64,6 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body, :image, :user_id, :area)
+    params.require(:blog).permit(:title, :body, :image, :user_id, :area, :latitude, :longitude)
   end
 end
