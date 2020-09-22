@@ -1,0 +1,24 @@
+#map-toggle {
+	cursor: pointer;
+}
+#map-page{
+  position: fixed;
+  bottom: -80%;
+  width: 50%;
+  left: 35%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  z-index: 10000;
+}
+#map-page.active{
+  bottom: 0;
+  z-index: 10000;
+}
+
+#map{
+	height: 300px;
+	min-width: 300px;
+}

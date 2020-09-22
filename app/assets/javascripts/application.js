@@ -74,3 +74,7 @@ function menuToggle(){
         var toggle = document.getElementById('toggle');
         nav.classList.toggle("active")
         toggle.classList.toggle("active")}
+
+function mapToggle(){
+        var toggle = document.getElementById('map-page');
+        toggle.classList.toggle("active")}

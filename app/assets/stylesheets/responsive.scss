@@ -39,12 +39,16 @@
   width:100%;
   left: 0;
 }
+.navbar-nav {
+    margin: 0!important;
+}
 .navbar-left a{
   margin-left:20px;
 }
 .navbar-right{
 	display: none;
 }
+
 .product{
   justify-content: center!important;
 
