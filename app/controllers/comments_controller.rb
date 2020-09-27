@@ -24,18 +24,22 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     blog = Blog.find(params[:comment][:blog_id])
-    if comment.destroy
-      if blog.comments.present?
-        avg = Comment.where(blog_id: params[:comment][:blog_id]).average(:rate).round(1)
-        blog.star = avg
-        blog.update(blog_params)
-        redirect_to blog_path(comment.blog_id), notice: "コメントを削除しました。"
-      else
-        avg = Comment.where(blog_id: params[:comment][:blog_id]).average(:rate)
-        blog.star = avg
-        blog.update(blog_params)
-        redirect_to blog_path(comment.blog_id), notice: "コメントを削除しました。"
+    if comment.user_id == current_user.id
+      if comment.destroy
+        if blog.comments.present?
+          avg = Comment.where(blog_id: params[:comment][:blog_id]).average(:rate).round(1)
+          blog.star = avg
+          blog.update(blog_params)
+          redirect_to blog_path(comment.blog_id), notice: "コメントを削除しました。"
+        else
+          avg = Comment.where(blog_id: params[:comment][:blog_id]).average(:rate)
+          blog.star = avg
+          blog.update(blog_params)
+          redirect_to blog_path(comment.blog_id), notice: "コメントを削除しました。"
+        end
       end
+    else
+      redirect_to blog_path(comment.blog_id)
     end
   end
 
