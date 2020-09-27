@@ -42,6 +42,9 @@ class BlogsController < ApplicationController
   def edit
     @blog = Blog.find(params[:id])
     @genres = Genre.all
+    if @blog.user_id != current_user.id
+      redirect_to blog_path(@blog)
+    end
   end
 
   def update
@@ -52,12 +55,16 @@ class BlogsController < ApplicationController
 
   def destroy
     blog = Blog.find(params[:id])
-    if blog.destroy
-      #0のタグを削除
-       blog.delete_genre
-       redirect_to blogs_path(blog), notice: "ブログを削除しました。"
+    if blog.user_id == current_user.id
+      if blog.destroy
+        #0のタグを削除
+         blog.delete_genre
+         redirect_to blogs_path, notice: "ブログを削除しました。"
+      else
+        render "show"
+      end
     else
-      render "show"
+      redirect_to blog_path(blog)
     end
   end
 
