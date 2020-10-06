@@ -92,4 +92,5 @@ gem 'devise-i18n-views'
 #mapの緯度、経度用gem
 gem "geocoder"
 
+#java→rb用gem
 gem 'gon'
